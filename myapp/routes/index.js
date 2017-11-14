@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 
+var db = require("../models/index.js");
+
 /* GET home page. */
 var isAuthenticated = function (req, res, next) {
 	// if user is authenticated in the session, call the next() to call the next request handler 
@@ -40,8 +42,21 @@ var isAuthenticated = function (req, res, next) {
 	}));
 
 	/* GET Home Page */
-	router.get('/home', isAuthenticated, function(req, res){
+	router.get('/home', function(req, res){
 		res.render('home', { user: req.user });
+	});
+
+	router.get('/mygroups', function(req,res){
+		db.lists.findAll({}).then(function(results){
+			res.render('list-man', {list: results});
+		})
+		// res.render('list-man');
+	});
+
+	router.get('/groups', function(req,res){
+		db.events.findAll({}).then(function(results){
+			res.render("list-join", {groups: results});
+		});
 	});
 
 	/* Handle Logout */

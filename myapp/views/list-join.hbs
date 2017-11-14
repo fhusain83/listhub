@@ -2,35 +2,23 @@
 
 <html>
 <head>
-	
-	<meta charset="utf-8" />
-	
-	<title>login</title>
-	<link rel="stylesheet" href="css/flexi-background.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="css/styles.css" type="text/css" media="screen" />
-
-	    <!-- Bootstrap core CSS -->
+    <meta charset="utf-8" />
+    <title>ListHub - Groups</title>
+    <link rel="stylesheet" href="css/flexi-background.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/home.css" type="text/css" media="screen" />
+    <!-- Bootstrap core CSS -->
     <link href="bootstrap/bootstrapCore.css" rel="stylesheet">
-
-    <!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-
     <!-- Custom styles for this template -->
-    <link href="css/styles.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative:700" rel="stylesheet">
+
+<!-- PRIMARY BOOTSTRAP -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 
-	<!-- jQuery CDN -->
-    <script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
-
-<!-- Latest compiled and minified CSS -->
+<!-- Latest compiled and minified CSS for Select Options ONLY NEEDED FOR LIST-JOIN FILE-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 
 </head>
 
@@ -38,32 +26,41 @@
 
 <script src="js/flexi-background.js" type="text/javascript" charset="utf-8"></script>
 
+<!-- Navigation Bar Start -->
 <div class="navbar-wrapper">
     <div class="container">
+        <nav class="navbar navbar-inverse navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <img src="images/listhub-white.png" class="logo" alt="yourlogo" />
 
-      <nav class="navbar navbar-inverse navbar-static-top">
-        
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> List Hub</a>
-          </div>
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li><a  class = "btn btn-lg" role = "button" href="/login"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Login/Sign-Up</a></li>
-            </ul>
-          </div>
-        </div>
-
-      </nav>
-
+                    
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                      <li><a class="navbar-brand" href="/home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>  
+                        <li>
+                            <a class="btn btn-lg" href="/login"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Login/Sign-Up</a>
+                        </li>
+                        <li>
+                            <a class="btn btn-lg" href="/groups"><span class="glyphicon glyphicon-th-list"></span> Create-List</a>
+                        </li>
+                        <li>
+                            <a class="btn btn-lg" href="/mygroups"><span class="glyphicon glyphicon-ok-sign"></span> Manage-List</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </div>
 </div>
+<!-- Navigation Bar End -->
 
 <div class = "container">
 	<div class="row">
@@ -113,9 +110,9 @@
 		<div class = "col-md-3" id = "group-members">
 			
 			<select class="selectpicker" data-live-search="true" title="Find a group to join here:">
-			  <option>Newsome Family Potluck</option>
-			  <option>Grand Canyon Hike</option>
-			  <option>Thompson Family Tailgate</option>
+				{{#each groups}}
+					<option>{{event_name}}</option>
+				{{/each}}
 			</select>
 
 			<form>
@@ -127,11 +124,19 @@
 	</div>
 </div>
 
+<footer class="footer">
+   <div class="container">
+       <p class="text-muted">ListHub Project 2 - SMU coding boot camp: &nbsp;Front end: Aaron &amp; Josh - Backend: Sarah &amp; Fatima</p>
+   </div>
+</footer>
 
 
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript for Select Options -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+
 <script src="bootstrap/bootstrapCore.js"></script>
 
 <script type="text/javascript" src = "js/script.js"></script>

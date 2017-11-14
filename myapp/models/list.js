@@ -1,10 +1,7 @@
 
 module.exports = function(sequelize, Sequelize){
 
-    var list = sequelize.define("list", {
-    item_id: {
-        type: Sequelize.INTEGER
-    },
+    var list = sequelize.define("lists", {
     item_name: {
         type: Sequelize.STRING
     },
@@ -13,7 +10,12 @@ module.exports = function(sequelize, Sequelize){
     },
     claimed: {
         type: Sequelize.BOOLEAN
+    }, 
+    user_id: {
+        type: Sequelize.INTEGER
     }
+}, {
+    timestamps: false
 });
     return list;
 }

@@ -26,6 +26,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static('public'));
 
 var flash = require('connect-flash');
 app.use(flash());

@@ -1,15 +1,15 @@
 var taskInput = $("#list-item");
 var addButton = $("#add-item");
-var incompleteTasksHolder = $("#incomplete-tasks");
+var incompleteTasksHolder = $("#group-list");
 var completedTasksHolder = $("#completed-tasks");
 
 //New Task List Item
 var createNewTaskElement = function(taskString) {
   //Create List Item
-  var listItem = $("<li>");
+  var listItem = $("<div>");
 
   //input (checkbox)
-  var checkBox = $("<input type = 'checkbox'>"); // checkbox
+  var checkBox = $("<input type = 'checkbox'>  "); // checkbox
   //label
   var label = $("<label>");
   //input (text)
@@ -134,7 +134,9 @@ var ajaxRequest = function() {
 
 // Set the click handler to the addTask function
 //addButton.onclick = addTask;
-addButton.on("click", addTask)
+addButton.on("click", addTask);
+
+$(".edit").on("click", editTask);
 
 // addButton.on("click", function(event){
 //   event.preventDefault();
